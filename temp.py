@@ -18,7 +18,7 @@ def generatePoint():
 	y = random.randint(0,WINDOW_HEIGHT)
 	return (x,y)
 
-def generatePoints(num):
+
 	points = []
 	for i in range(0,num):
 		points.append(generatePoint())
