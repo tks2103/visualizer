@@ -18,6 +18,9 @@ class Segment:
     intersect = (self.end.y - slope * self.end.x)
     return Line(slope, intersect)
 
+  def tup(self):
+    return (self.start.tup(), self.end.tup())
+
   def perpendicular_line_to_midpoint(self):
     line = self.to_line()
     line.perpendicularize()
