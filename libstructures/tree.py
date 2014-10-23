@@ -19,14 +19,14 @@ class Node:
     else:
       return False
 
-  #def search(self, point):
-  #  if(self.isLeaf()):
-  #    return self.data
-  #  else:
-  #    if(direction(self.data, point) == 'left'):
-  #      return self.left.search(point)
-  #    else:
-  #      return self.right.search(point)
+  def search(self, point):
+    if(self.isLeaf()):
+      return self.data
+    else:
+      if(direction(self.data, point) == 'left'):
+        return self.left.search(point)
+      else:
+        return self.right.search(point)
 
 class Tree:
   def __init__(self, root):
@@ -44,5 +44,5 @@ class Tree:
     if(item.__class__.__name__ == "Point"):
       self.serializedState.append(item)
 
-  #def search(self, point):
-  #  return self.root.search(point)
+  def search(self, point):
+    return self.root.search(point)

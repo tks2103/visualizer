@@ -8,3 +8,7 @@ class Point:
 
   def tup(self):
     return (self.x, self.y)
+
+  def nearest_vertical_parabola(self, parabolas):
+    dists = [(parabola.at(self.x) - self.x) for parabola in parabolas]
+    return parabolas[dists.index(min(dists))]
