@@ -29,10 +29,13 @@ tree  = Tree(node2)
 parabolas = map(lambda x: Parabola.generate_from_directrix_and_focus(0, x), tree.serialize())
 map(lambda parabola: renderer.draw_parabola(parabola), parabolas)
 
-pt = Point(3, 0)
+pt = Point(5, 0)
 
 renderer.draw_parabola(pt.nearest_vertical_parabola(parabolas), (255, 0, 0))
 renderer.draw_point(pt, (0, 255, 0))
+
+print tree.search(pt)
+
 renderer.draw()
 
 #input handling (somewhat boilerplate code):

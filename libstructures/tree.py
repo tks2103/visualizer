@@ -1,3 +1,5 @@
+from libgeo.parabola import Parabola
+
 class Node:
   def __init__(self, left, right, data):
     self.left = left
@@ -23,7 +25,10 @@ class Node:
     if(self.isLeaf()):
       return self.data
     else:
-      if(direction(self.data, point) == 'left'):
+      parabola1 = Parabola.generate_from_directrix_and_focus(point.y, self.data.start)
+      parabola2 = Parabola.generate_from_directrix_and_focus(point.y, self.data.end)
+      nearest_parabola = point.nearest_vertical_parabola([parabola1, parabola2])
+      if(nearest_parabola == parabola1):
         return self.left.search(point)
       else:
         return self.right.search(point)
