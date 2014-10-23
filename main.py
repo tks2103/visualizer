@@ -16,6 +16,6 @@ renderer.draw()
 
 #input handling (somewhat boilerplate code):
 while True:
-   for event in pygame.event.get():
-      if event.type == pygame.QUIT:
-          sys.exit(0)
+  for event in pygame.event.get():
+    if event.type == pygame.QUIT:
+      sys.exit(0)
