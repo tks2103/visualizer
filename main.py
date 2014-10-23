@@ -21,8 +21,8 @@ renderer = Renderer(window)
 framect = 300
 
 tree = Tree(None)
-rng = 10
-num = 100
+rng = 11
+num = 10
 
 randopoints = [random.uniform(-rng, rng) for x in range(0, num)]
 randopoints.sort(reverse=True)
