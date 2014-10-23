@@ -1,7 +1,7 @@
 import pygame
 
-WINDOW_WIDTH = 640
-WINDOW_HEIGHT = 480
+WINDOW_WIDTH = 800
+WINDOW_HEIGHT = 600
 ZOOM = 25
 BLACK = (0,0,0)
 
@@ -11,7 +11,7 @@ class Renderer:
     self.window.fill((255,255,255))
 
   def draw_parabola(self, parabola, color=BLACK):
-    [self.draw_segment(x, color) for x in parabola.segments(WINDOW_WIDTH)]
+    [self.draw_segment(x, color) for x in parabola.segments(WINDOW_WIDTH/ZOOM)]
 
   def draw_point(self, point, color=BLACK):
     pygame.draw.circle(self.window, color, self.local_to_world_coordinates(point.tup()), 2, 0)

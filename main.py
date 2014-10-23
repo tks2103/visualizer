@@ -12,15 +12,23 @@ from libstructures.tree import Node
 def prn(x):
   print x
 
+WINDOW_WIDTH = 800
+WINDOW_HEIGHT = 600
 random.seed()
 pygame.init()
-window = pygame.display.set_mode((640, 480))
+window = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
 renderer = Renderer(window)
 framect = 300
 
 tree = Tree(None)
+rng = 10
+num = 100
 
-queue = [Point(5, 5), Point(1, 4), Point(-2, 3), Point(3, -1), Point(-5, -2), Point(-3, -3)]
+randopoints = [random.uniform(-rng, rng) for x in range(0, num)]
+randopoints.sort(reverse=True)
+randopoints = [Point(random.uniform(-rng, rng), x) for x in randopoints]
+#queue = [Point(5, 5), Point(1, 4.5), Point(1.1, 4.25), Point(-2, 3), Point(3, -1), Point(-5, -2), Point(-3, -3)]
+queue = randopoints
 
 while True:
   for event in pygame.event.get():

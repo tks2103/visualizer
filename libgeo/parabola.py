@@ -18,7 +18,7 @@ class Parabola:
     return x * x * self.a + x * self.b + self.c
 
   def segments(self, width):
-    points = [Point(x, self.at(x)) for x in range(-width/2, width/2)]
+    points = [Point(x, self.at(x)) for x in range(-width/2, width/2+2)]
     return [Segment(*x) for x in zip(points, points[1:])]
 
   def __str__(self):
