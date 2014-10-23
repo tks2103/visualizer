@@ -2,7 +2,7 @@ import pygame
 
 WINDOW_WIDTH = 640
 WINDOW_HEIGHT = 480
-ZOOM = 20
+ZOOM = 25
 BLACK = (0,0,0)
 
 class Renderer:
@@ -21,7 +21,8 @@ class Renderer:
                                          self.local_to_world_coordinates(segment.end.tup()), 2)
 
   def local_to_world_coordinates(self, tup):
-    return (WINDOW_WIDTH / 2 + tup[0] * ZOOM, WINDOW_HEIGHT / 2 - tup[1] * ZOOM)
+    return (int(WINDOW_WIDTH / 2 + tup[0] * ZOOM), int(WINDOW_HEIGHT / 2 - tup[1] * ZOOM))
 
   def draw(self):
-    pygame.display.flip()
+    pygame.display.update()
+    self.window.fill((255,255,255))
