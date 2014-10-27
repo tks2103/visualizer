@@ -36,8 +36,8 @@ while True:
       sys.exit(0)
 
   framect -= 1
-  renderer.draw_segment(Segment(Point(-100, 0), Point(100, 0)))
-  renderer.draw_segment(Segment(Point(0, -100), Point(0, 100)))
+  renderer.draw_segment(Segment(Point(-20, 0), Point(20, 0)))
+  renderer.draw_segment(Segment(Point(0, -15), Point(0, 15)))
 
   ind = framect / 20.0
   if len(queue) == 0:
@@ -57,6 +57,6 @@ while True:
 
   if not parabolas == []:
     renderer.draw_parabola(pt.nearest_vertical_parabola(parabolas), (255, 0, 0))
-  renderer.draw_segment(Segment(Point(-300, ind), Point(300, ind)), (0, 255, 0))
+  renderer.draw_segment(Segment(Point(-20, ind), Point(20, ind)), (0, 255, 0))
 
   renderer.draw()
