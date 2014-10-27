@@ -10,20 +10,29 @@ class Parabola:
     c = (focus.x * focus.x + focus.y * focus.y - directrix * directrix) / (1.0 * 2 * focus.y - 2 * directrix)
     return Parabola(a, b, c)
 
-  #@staticmethod
-  #def get_horizontal_intersections(parabolas):
 
+  @staticmethod
+  def horizontal_intersections(parabolas, start, end):
+    intersect_tuples = map(lambda x: Parabola.intersections(x[0], x[1]), zip(parabolas, parabolas[1:]))
+    intersects = []
+    for tup in intersect_tuples:
+      if min(tup) > start:
+        start = min(tup)
+        intersects.append(min(tup))
+      else:
+        start = max(tup)
+        intersects.append(max(tup))
+    return intersects
 
   @staticmethod
   def intersections(parabola1, parabola2):
-    b = parabola1.b - parabola2.b
     a = parabola1.a - parabola2.a
+    b = parabola1.b - parabola2.b
     c = parabola1.c - parabola2.c
-    print b
-    print a
-    print c
-    return ( (-b + sqrt(b * b - 4 * a * c)) / (2 * a), (-b - sqrt(b * b - 4 * a * c)) / (2 * a) )
-
+    if a == 0:
+      return -c / (1.0 * b)
+    tup = ( (-b + sqrt(b * b - 4 * a * c)) / (2 * a), (-b - sqrt(b * b - 4 * a * c)) / (2 * a) )
+    return tup
 
   def __init__(self, a, b, c):
     self.a = a
@@ -33,8 +42,8 @@ class Parabola:
   def at(self, x):
     return x * x * self.a + x * self.b + self.c
 
-  def segments(self, width):
-    points = [Point(x, self.at(x)) for x in (map (lambda x: x / 4.0, range(-width/2, width/2+2)))]
+  def segments(self, start, finish):
+    points = [Point(x, self.at(x)) for x in (map (lambda x: x / 10.0, range(int(start * 10), int(finish * 10))))]
     return [Segment(*x) for x in zip(points, points[1:])]
 
   def __str__(self):

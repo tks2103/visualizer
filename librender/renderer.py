@@ -10,10 +10,13 @@ class Renderer:
     self.window = window
     self.window.fill((255,255,255))
 
-  def draw_parabola(self, parabola, color=BLACK):
-    culled_segments = parabola.segments(WINDOW_WIDTH)
+  def draw_parabola_segment(self, parabola, start, end, color=BLACK):
+    culled_segments = parabola.segments(start, end)
     culled_segments = [x for x in culled_segments if self.in_viewport(x.start.tup()) or self.in_viewport(x.end.tup())]
     [self.draw_segment(x, color) for x in culled_segments]
+
+  def draw_parabola(self, parabola, color=BLACK):
+    self.draw_parabola_segment(parabola, -WINDOW_WIDTH / 2, WINDOW_WIDTH / 2 + 2, color)
 
   def draw_point(self, point, color=BLACK):
     pygame.draw.circle(self.window, color, self.local_to_world_coordinates(point.tup()), 2, 0)
